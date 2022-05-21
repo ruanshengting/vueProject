@@ -1,7 +1,11 @@
 <template>
   <header>
     <h1>{{ title }}</h1>
-    <Button text="Add Task" color="green" />
+    <Button
+      @btn-click="$emit('toggle-add-task')"
+      :text="showAddTask ? 'Close' : 'Add Task'"
+      :color="showAddTask ? 'red' : 'green'"
+    />
   </header>
 </template>
 <script>
@@ -14,6 +18,7 @@ export default {
       type: String, //设置属性值的类型
       default: 'Hi All', //设置默认属性值
     },
+    showAddTask: Boolean,
   },
   components: {
     Button, //声明组件

@@ -13,7 +13,7 @@ export default {
   },
   methods: {
     onClick() {
-      console.log('Ava Ruan')
+      this.$emit('btn-click')
     },
   },
 }
