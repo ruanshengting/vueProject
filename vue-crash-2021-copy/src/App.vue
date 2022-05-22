@@ -14,6 +14,7 @@
       @delete-task="deleteTask"
       :tasks="tasks"
     />
+    <router-view></router-view>
     <Footer />
   </div>
 </template>
@@ -57,7 +58,6 @@ export default {
     async toggleReminder(id) {
       const taskToToggle = await this.fetchTask(id)
       const updateToggle = { ...taskToToggle, reminder: !taskToToggle.reminder }
-      console.log('🚀 ~  taskToToggle:', taskToToggle)
       const res = await fetch(`api/tasks/${id}`, {
         method: 'PUT',
         headers: {
@@ -76,13 +76,11 @@ export default {
     async fetchTasks() {
       const res = await fetch('api/tasks')
       const data = await res.json()
-      console.log('🚀  fetchTasks ~ data', data)
       return data
     },
     async fetchTask(id) {
       const res = await fetch(`api/tasks/${id}`)
       const data = await res.json()
-      console.log('🚀  fetchTask ~ data', data)
       return data
     },
   },

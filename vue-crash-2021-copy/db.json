@@ -14,10 +14,15 @@
     },
     {
       "id": "3",
+      "text": "Meeting with RST",
+      "day": "March 6th at 1:30pm",
       "reminder": false
     },
     {
-      "id": 19294
+      "id": "4",
+      "text": "Meeting with Marry",
+      "day": "March 6th at 1:30pm",
+      "reminder": true
     }
   ]
 }
