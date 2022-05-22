@@ -20,6 +20,7 @@ export default {
     const num2 = ref(0)
     const result = ref(0)
     function add() {
+      //改变setup中的数据
       result.value = parseInt(num1.value) + parseInt(num2.value)
     }
     return { num1, num2, result, add }
