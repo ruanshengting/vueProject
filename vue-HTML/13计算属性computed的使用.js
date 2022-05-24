@@ -10,7 +10,7 @@ const app = Vue.createApp({
   },
   computed: {
     // 有缓存特性。对性能有好处,只要num没有变化，computed属性就不会再计算
-    //计算属性写法1:
+    //计算属性写法1:这种方法用的多
     error() {
       return this.num === 0
         ? '不能继续减少'
@@ -28,7 +28,7 @@ const app = Vue.createApp({
             ? 'Cannot add anymore'
             : ''
         if (message) {
-          this.tip + message
+          return this.tip + message
         }
       },
       set(tip) {
@@ -46,13 +46,13 @@ const app = Vue.createApp({
     //         : ''
     //     },
     add() {
-      this.error = '添加提示'
+      this.error = '添加提示:'
       if (this.num < 10) {
         this.num++
       }
     },
     desc() {
-      this.error = '减少提示' //会自动用set的方法
+      this.error = '减少提示:' //会自动用set的方法
       if (this.num > 0) {
         this.num--
       }
