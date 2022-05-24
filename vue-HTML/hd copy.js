@@ -3,6 +3,7 @@ const app = Vue.createApp({
   data() {
     return {
       name: 'hdr',
+      html: `<div style="color:red">Red</div>`,
     }
   },
 })
