@@ -1,16 +1,18 @@
 <script>
+import ClassComponent from './components/ClassComponnet.vue'
+import ClassList from './components/ClassList.vue'
+import StyleComponent from './components/StyleComponent.vue'
 export default {
   data() {
-    return {
-      title: 'ava',
-      name: 'abc',
-    }
+    return {}
   },
+  components: { ClassComponent, ClassList, StyleComponent },
 }
 </script>
 
 <template>
-  <div class="hd">123 {{ title }}---{{ name }}</div>
+  <!-- <ClassList class="hdxj" /> -->
+  <StyleComponent />
 </template>
 
 <style>
