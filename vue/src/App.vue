@@ -5,6 +5,10 @@ import StyleComponent from './components/StyleComponent.vue'
 import IfComment from './components/IfComment.vue'
 import VForComponent from './components/VForComponent.vue'
 import LessonFor from './components/LessonFor.vue'
+import ArrComponent from './components/ArrComponent.vue'
+import EventFixComp from './components/EventFixComp.vue'
+import keyComp from './components/keyComp.vue'
+import InputComp from './components/InputComp.vue'
 export default {
   data() {
     return {}
@@ -16,6 +20,10 @@ export default {
     IfComment,
     VForComponent,
     LessonFor,
+    ArrComponent,
+    EventFixComp,
+    keyComp,
+    InputComp,
   },
 }
 </script>
@@ -25,7 +33,11 @@ export default {
   <!-- <StyleComponent /> -->
   <!-- <IfComment /> -->
   <!-- <VForComponent v-for="n in 3" :key="n" /> -->
-  <LessonFor />
+  <!-- <LessonFor /> -->
+  <!-- <ArrComponent /> -->
+  <!-- <EventFixComp /> -->
+  <!-- <keyComp /> -->
+  <InputComp />
 </template>
 
 <style>
