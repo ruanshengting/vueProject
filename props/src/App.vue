@@ -10,7 +10,7 @@
     />
 
     <hr />
-    <button @click="btContent = '父组件change'">父组件</button>
+    <button @click="btContent = '父组件change'">父组件btContent</button>
     {{ btContent }}
     <hr />
     <button @click="testObj.text = '父组件testObj'">父组件testObj</button>

@@ -7,7 +7,7 @@
   <button @click="content = '子组件的change'">子组件的change</button>
   <hr />
   <button @click="text = '子组件改变object'">子组件改变object</button>
-  <span>{{ text }}</span>
+  <span>This is text:{{ text }}</span>
   <!-- <div>{{ arr }}</div> -->
 </template>
 
@@ -50,6 +50,12 @@ export default {
     return {
       text: this.content, //把这个props变成响应式的初始值
     }
+  },
+  watch: {
+    //使用watch监听props之后，prop就是响应式数据了
+    content(v) {
+      this.text = v
+    },
   },
 }
 </script>
