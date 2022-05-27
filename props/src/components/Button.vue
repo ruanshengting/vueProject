@@ -1,6 +1,6 @@
 <template>
   <div :class="[type, { disabled }]">
-    <span>{{ hdTip }}</span>
+    <span v-bind="$attrs">{{ hdTip }}</span>
     显示子组件的content： {{ content }}
   </div>
 
