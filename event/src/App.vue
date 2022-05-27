@@ -1,6 +1,7 @@
 <template>
   <div class="lesson">
     <Lesson v-for="item in db" :key="item.id" :lesson="item" @del="show" />
+
     <!-- <input type="text" :value="title" @input="title = $event.target.value" />
     {{ title }} -->
     <!-- <HdInput :value="title" @update:value="change" /> -->

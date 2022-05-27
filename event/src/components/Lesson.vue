@@ -1,9 +1,15 @@
 <template>
   <div>
     <img :src="lesson.preview" :alt="lesson.title" />
-    <h3>
-      {{ lesson.title }}
-      <input type="text" v-model="lesson.title" />
+    <h3 @dblclick="inputShow = true">
+      <input
+        v-if="inputShow"
+        type="text"
+        v-model="lesson.title"
+        @keyup.enter="inputShow = false"
+        @blur="inputShow = false"
+      />
+      <strong v-else>{{ lesson.title }}</strong>
     </h3>
     <!-- 调用方式1:
     -->
@@ -16,6 +22,11 @@
 <script>
 export default {
   isheritAttrs: false,
+  data() {
+    return {
+      inputShow: false,
+    }
+  },
   props: ['lesson'],
   emits: {
     del(v) {
