@@ -11,6 +11,17 @@
       />
       <strong v-else>{{ lesson.title }}</strong>
     </h3>
+    <h3 @dblclick="inputPrice = true">
+      <input
+        v-if="inputPrice"
+        type="text"
+        v-model="lesson.price"
+        @input="$emit('update:price', $event.target.value)"
+        @keyup.enter="inputPrice = false"
+        @blur="inputPrice = false"
+      />
+      <strong v-else>{{ lesson.price }}</strong>
+    </h3>
     <!-- 调用方式1:
     -->
     <!-- <span @click="$emit('del', lesson)">X</span> -->
@@ -25,9 +36,13 @@ export default {
   data() {
     return {
       inputShow: false,
+      inputPrice: false,
     }
   },
-  props: ['lesson'],
+  created() {
+    console.log(this.modelModifiers)
+  },
+  props: ['lesson', 'modelValue', 'price', 'modelModifiers'],
   emits: {
     del(v) {
       //emit校验
@@ -37,6 +52,8 @@ export default {
         console.error('del emit')
       }
     },
+    'update:modelValue': null,
+    'update:price': null,
   }, //注册自定义事件
   methods: {
     del() {
