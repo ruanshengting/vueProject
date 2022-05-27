@@ -6,6 +6,7 @@
         v-if="inputShow"
         type="text"
         v-model="lesson.title"
+        @input="changeTitle"
         @keyup.enter="inputShow = false"
         @blur="inputShow = false"
       />
@@ -59,6 +60,13 @@ export default {
     del() {
       confirm('确认删除嘛？')
       this.$emit('del', this.lesson.id)
+    },
+    changeTitle($event) {
+      let value = $event.target.value
+      if (this.modelModifiers) {
+        value = value.trim()
+      }
+      this.$emit('update:modelValue', value)
     },
   },
 }
