@@ -1,16 +1,20 @@
 <template>
   <div class="lesson">
     <Lesson v-for="item in db" :key="item.id" :lesson="item" @del="show" />
-    <input type="text" :value="title" @input="title = $event.target.value" />
-    {{ title }}
+    <!-- <input type="text" :value="title" @input="title = $event.target.value" />
+    {{ title }} -->
+    <!-- <HdInput :value="title" @update:value="change" /> -->
+    <!-- <HdInput v-model="title" />
+    title:{{ title }} -->
   </div>
 </template>
 
 <script>
 import db from '../data/db'
 import Lesson from './components/Lesson.vue'
+import HdInput from './components/HdInput.vue'
 export default {
-  components: { Lesson },
+  components: { Lesson, HdInput },
   data() {
     return {
       db,
@@ -18,6 +22,9 @@ export default {
     }
   },
   methods: {
+    change(v) {
+      this.title = v
+    },
     input(event) {
       console.log('🚀 ~ file: App.vue ~ line 22 ~ event', event)
     },

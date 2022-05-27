@@ -1,10 +1,13 @@
 <template>
   <div>
     <img :src="lesson.preview" :alt="lesson.title" />
-    <h3>{{ lesson.title }}</h3>
+    <h3>
+      {{ lesson.title }}
+      <input type="text" v-model="lesson.title" />
+    </h3>
     <!-- 调用方式1:
     -->
-    <span @click="$emit('del', lesson)">X</span>
+    <!-- <span @click="$emit('del', lesson)">X</span> -->
     <!-- 调用方式2: -->
     <span @click="del">X</span>
   </div>
