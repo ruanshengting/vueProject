@@ -5,8 +5,8 @@
       title="Task Tracker"
       :showAddTask="showAddTask"
     />
-
     <router-view :showAddTask="showAddTask"></router-view>
+    <!-- <router-view> 定义显示部分，就是点击后，区配的内容显示在什么地方 -->
     <Footer />
   </div>
 </template>

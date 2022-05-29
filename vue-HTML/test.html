@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动态属性和指令基础</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+      .demo {
+        font-family: sans-serif;
+        border: 1px solid #eee;
+        border-radius: 2px;
+        padding: 20px 30px;
+        margin-top: 1em;
+        margin-bottom: 40px;
+        user-select: none;
+        overflow-x: auto;
+      }
+
+      .tab-button {
+        padding: 6px 10px;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        background: #f0f0f0;
+        margin-bottom: -1px;
+        margin-right: -1px;
+      }
+      .tab-button:hover {
+        background: #e0e0e0;
+      }
+      .tab-button.active {
+        background: #e0e0e0;
+      }
+      .demo-tab {
+        border: 1px solid #ccc;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="v-model-example" class="demo">
+      <p>First name: {{ firstName }}</p>
+      <p>Last name: {{ lastName }}</p>
+      <user-name
+        v-model:first-name="firstName"
+        v-model:last-name="lastName"
+      ></user-name>
+    </div>
+  </body>
+  <script>
+    const UserName = {
+      props: {
+        firstName: String,
+        lastName: String,
+      },
+      template: `
+    <input 
+      type="text"
+      :value="firstName"
+      @input="$emit('update:firstName', $event.target.value)"
+     >
+
+    <input
+      type="text"
+      :value="lastName"
+      @input="$emit('update:lastName', $event.target.value)">
+  `,
+    }
+
+    const HelloVueApp = {
+      components: {
+        UserName,
+      },
+      data() {
+        return {
+          firstName: 'John',
+          lastName: 'Doe',
+        }
+      },
+    }
+
+    Vue.createApp(HelloVueApp).mount('#v-model-example')
+  </script>
+</html>
