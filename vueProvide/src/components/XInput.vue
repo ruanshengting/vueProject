@@ -15,6 +15,12 @@ export default {
       content: this.modelValue, //不要直接修改prop，所以先在data中赋值，再用去使用
     }
   },
+  watch: {
+    content(value) {
+      console.log(value)
+      this.$emit('update:modelValue', value) //这样的话，父组件的v-model也会改变
+    },
+  },
 }
 </script>
 
