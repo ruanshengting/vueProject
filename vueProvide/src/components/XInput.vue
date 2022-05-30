@@ -1,8 +1,7 @@
 <template>
   <label>
     <div>{{ title }}</div>
-    <input v-model="content" />
-    {{ content }}
+    <div><input v-model="content" /></div>
   </label>
 </template>
 
@@ -32,6 +31,7 @@ label {
     color: #666;
     font-size: 16px;
     margin-top: 10px;
+    width: 100px;
   }
   input {
     border: solid 2px #ddd;
