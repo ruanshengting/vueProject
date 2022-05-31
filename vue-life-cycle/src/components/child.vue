@@ -7,6 +7,7 @@ export default {
   data() {
     return {
       hd: 'ava test',
+      timeId: null,
     }
   },
   beforeCreate() {
@@ -17,11 +18,13 @@ export default {
     )
   },
   created() {
-    //
     console.log(
       '子组件 created：在这个阶段vue实例已经创建，仍然不能获取DOM元素。一般来说，如果组件在加载的时候需要和后端有交互，放在这俩个钩子函数（beforeCreate/created）执行都可以，如果是需要访问props、data等数据的话，就需要使用created钩子函数',
       this.hd,
     )
+    this.timeId = setInterval(() => {
+      console.log('ava--timeId')
+    }, 500)
   },
   beforeMount() {
     console.log(
@@ -49,10 +52,14 @@ export default {
     console.log('🚀 ~ file: App.vue ~ line 46 ~ updated ~  this.hd ', this.hd)
   },
   beforeUnmount() {
+    //组件消失的时候，组件会被卸载。
     console.log('子组件beforeUnmount' + this.hd)
   },
   unmounted() {
+    //组件消失的时候，组件会被卸载。
     console.log('子组件unmounted' + this.hd)
+    //这个child组件不可见之后，需要把这个定时器清除
+    clearInterval(this.timeId)
   },
 }
 </script>
