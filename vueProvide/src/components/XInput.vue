@@ -3,6 +3,7 @@
     <div>{{ title }}</div>
     <div><input v-model="content" /></div>
   </label>
+  <div>{{ webname }}</div>
 </template>
 
 <script>
@@ -20,6 +21,7 @@ export default {
       this.$emit('update:modelValue', value) //这样的话，父组件的v-model也会改变
     },
   },
+  inject: ['webname'],
 }
 </script>
 
