@@ -9,11 +9,11 @@
       v-model.trim="item.title"
     />
     {{ db }}
-    <!-- <input type="text" :value="title" @input="title = $event.target.value" />
-    {{ title }} -->
-    <!-- <HdInput :value="title" @update:value="change" /> -->
-    <!-- <HdInput v-model="title" />
-    title:{{ title }} -->
+    <input type="text" :value="title" @input="title = $event.target.value" />
+    {{ title }}
+    <HdInput :value="title" @update:value="change" />
+    <HdInput v-model="title" />
+    title:{{ title }}
   </div>
 </template>
 
@@ -37,6 +37,7 @@ export default {
       console.log('🚀 ~ file: App.vue ~ line 22 ~ event', event)
     },
     show(id) {
+      console.log('🚀 ~ file: App.vue ~ line 40 ~ show ~ id', id)
       const index = this.db.findIndex((fItem) => fItem.id === id)
       console.log('🚀 ~ file: App.vue ~ line 20 ~ show ~ index', index)
       this.db.splice(index, 1)

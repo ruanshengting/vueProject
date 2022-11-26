@@ -8,7 +8,7 @@
   <hr />
   <button @click="text = '子组件改变object'">子组件改变object</button>
   <span>This is text:{{ text }}</span>
-  <!-- <div>{{ arr }}</div> -->
+  <div>{{ arr }}</div>
 </template>
 
 <script>
@@ -48,11 +48,12 @@ export default {
   },
   data() {
     return {
-      text: this.content, //把这个props变成响应式的初始值
+      text: this.content, //把content props变成响应式的初始值
+      arr: this.testObj,
     }
   },
   watch: {
-    //使用watch监听props之后，prop就是响应式数据了
+    //使用watch监听props:content之后，prop就是响应式数据了
     content(v) {
       this.text = v
     },

@@ -1,0 +1,48 @@
+.weather-search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+body {
+  display: flex;
+}
+.app-container {
+  margin: auto;
+}
+.result-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-left: 1px solid #ccc;
+  padding: 15px;
+}
+li {
+  list-style: none;
+}
+ul > li:nth-child(1) .result-container {
+  border-left: none;
+}
+ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.search-input {
+  width: 666px;
+}
+.hotkey {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.hotkey > a {
+  padding-left: 10px;
+}

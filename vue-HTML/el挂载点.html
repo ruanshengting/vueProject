@@ -7,19 +7,13 @@
     <title>el挂载点</title>
   </head>
   <body>
-    {{message}}
-    <div class="try" id="app">
+    <div id="app">
       {{message}}
-    </div>
-    <div>
-      注意： 1.不要把el挂载到body/HTML标签
-      2.vue实例命中元素是el选项命中的元素以及它的后代元素。
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script>
       var app = new Vue({
-        el: '#app', //ID选择
-        // el: '.try', //class选择
+        el: '#app',
         data: {
           message: 'hello Ava',
         },

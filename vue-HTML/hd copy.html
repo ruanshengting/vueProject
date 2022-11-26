@@ -9,10 +9,15 @@
   </head>
   <body>
     <div id="app">
-      <div>{{name}}</div>
-      <div v-text="name"></div>
-      <div v-html="html"></div>
+      {{name}}
     </div>
-    <script src="hd copy.js"></script>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          name: 'hello Ava',
+        },
+      })
+    </script>
   </body>
 </html>

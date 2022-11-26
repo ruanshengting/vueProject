@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>axios+vue</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="button" value="获得joke" @click="getJoke" />
+      {{joke}}
+    </div>
+  </body>
+  <script src="https://unpkg.com/axios/dist/axios.min.js">
+    //src="https://unpkg.com/axios/dist/axios.min.js"是导用axios
+    //https://autumnfish.cn/api/joke
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        joke: 'click joke',
+      },
+      methods: {
+        /*
+     getJoke() {
+          var that = this
+          axios.get('https://autumnfish.cn/api/joke').then(
+            //axios回调函数中的this已经改变，无法访问data中的数据
+            function (res) {
+              console.log('res=' + res.data)
+              that.joke = res.data
+            },
+            function (err) {
+              console.log('err=' + err)
+            },
+          )
+        },
+     */ getJoke() {
+          var that = this
+          axios
+            .get('https://autumnfish.cn/api/joke')
+            .then(
+              //箭头函数的话就可以直接访问到this了
+              (res) => {
+                this.joke = res.data
+              },
+            )
+            .catch((error) => {
+              console.log(error)
+            })
+        },
+      },
+    })
+  </script>
+</html>
