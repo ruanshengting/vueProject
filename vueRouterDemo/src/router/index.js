@@ -48,6 +48,7 @@ const routes = [
       shopTopViewName: shopTop,
       shopFooterViewName: shopFooter,
     },
+    //给命名视图添加props
     props: {
       default: true,
       shopTopViewName: false,
