@@ -23,6 +23,7 @@ const routes = [
     component: User,
   },
   {
+    name: 'news',
     //+表示一至多，*表示零至多
     //使用正则表示参数只能是数字
     //path: '/news/:id(\\d+)',

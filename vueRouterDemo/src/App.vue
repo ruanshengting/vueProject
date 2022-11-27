@@ -16,7 +16,10 @@ import HelloWorld from './components/HelloWorld.vue'
       <br />
       <router-link to="/user/123">Go to User</router-link>
       <br />
-      <router-link to="/news/321">Go to news</router-link>
+      <!-- <router-link to="/news/321">Go to news</router-link> -->
+      <router-link :to="{ name: 'news', params: { id: 99999 } }">
+        Go to news
+      </router-link>
       <br />
       <router-link to="/parent">Go to Parent</router-link>
       <br />
