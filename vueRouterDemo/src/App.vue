@@ -24,10 +24,15 @@ import HelloWorld from './components/HelloWorld.vue'
       <router-link to="/parent">Go to Parent</router-link>
       <br />
       <router-link to="/page">Go to Page</router-link>
+      <br />
+      <router-link to="/shop">Go to Shop</router-link>
     </p>
     <!-- 路由出口 -->
     <!-- 路由匹配到的组件将渲染在这里 占位符 -->
+    <router-view name="shopTopViewName"></router-view>
     <router-view></router-view>
+    <!-- 命名视图 -->
+    <router-view name="shopFooterViewName"></router-view>
   </div>
 </template>
 
