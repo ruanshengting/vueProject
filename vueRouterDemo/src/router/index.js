@@ -18,20 +18,40 @@ import shopMain from '../views/shopMain.vue'
 // 每个路由都需要映射到一个组件。
 // 我们后面再讨论嵌套路由。
 const routes = [
-  { path: '/', redirect: '/home' }, //重定向
-  { path: '/home', component: Home },
+  {
+    path: '/',
+    /*//根据path重定向
+  redirect: '/home' 
+  */
+    //根据命名路由重定向
+    // redirect: { name: 'home' },
+    //根据方法重定向
+    redirect: (to) => {
+      console.log(to) //当前的path
+      return {
+        name: 'home',
+      }
+    },
+  }, //重定向
+  { path: '/home', component: Home, name: 'home' },
   { path: '/about', component: About, name: 'about' /*给页面name属性*/ },
   { path: '/page', component: Page },
   {
     path: '/user/:id',
     component: User,
+    props: true,
   },
   {
-    path: '/shop',
+    path: '/shop/:id',
     components: {
       default: shopMain,
       shopTopViewName: shopTop,
       shopFooterViewName: shopFooter,
+    },
+    props: {
+      default: true,
+      shopTopViewName: false,
+      shopFooterViewName: false,
     },
   },
   {
@@ -49,6 +69,7 @@ const routes = [
   },
   {
     path: '/parent',
+    alias: ['/father', '/daddy'], //起别名，通过这个path也能访问这个组件
     component: Parent,
     //如果在Parent组件里这样写 <router-link to="/parent/style2">Go to Style2</router-link> 那么children的path就不用加/
     //如果在Parent组件里这样写 <router-link to="/style2">Go to Style2</router-link> 那么children的path就要加/
