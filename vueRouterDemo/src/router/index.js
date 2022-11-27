@@ -11,16 +11,28 @@ import StyleOne from '../views/StyleOne.vue'
 import StyleTwo from '../views/StyleTwo.vue'
 import Parent from '../views/Parent.vue'
 import Page from '../views/Page.vue'
+import shopTop from '../views/shopTop.vue'
+import shopFooter from '../views/shopFooter.vue'
+import shopMain from '../views/shopMain.vue'
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
 // 我们后面再讨论嵌套路由。
 const routes = [
-  { path: '/', component: Home },
+  { path: '/', redirect: '/home' }, //重定向
+  { path: '/home', component: Home },
   { path: '/about', component: About, name: 'about' /*给页面name属性*/ },
   { path: '/page', component: Page },
   {
     path: '/user/:id',
     component: User,
+  },
+  {
+    path: '/shop',
+    components: {
+      default: shopMain,
+      shopTopViewName: shopTop,
+      shopFooterViewName: shopFooter,
+    },
   },
   {
     name: 'news',
