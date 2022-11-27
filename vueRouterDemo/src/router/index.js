@@ -1,5 +1,9 @@
 /*main.js是整个vue的入口 不要写太多的逻辑， 在这里专门对路由进行处理*/
-import { createRouter, createWebHashHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHashHistory,
+  createWebHistory,
+} from 'vue-router'
 // 1. 定义路由组件.
 // 也可以从其他文件导入
 import Home from '../views/Home.vue'
@@ -14,6 +18,7 @@ import Page from '../views/Page.vue'
 import shopTop from '../views/shopTop.vue'
 import shopFooter from '../views/shopFooter.vue'
 import shopMain from '../views/shopMain.vue'
+import { nextTick } from 'vue'
 // 2. 定义一些路由
 // 每个路由都需要映射到一个组件。
 // 我们后面再讨论嵌套路由。
@@ -34,7 +39,20 @@ const routes = [
     },
   }, //重定向
   { path: '/home', component: Home, name: 'home' },
-  { path: '/about', component: About, name: 'about' /*给页面name属性*/ },
+  {
+    path: '/about',
+    component: About,
+    name: 'about' /*给页面name属性*/,
+    //单独的路由守卫
+    beforeEnter: (to, from, next) => {
+      console.log('About to=', to)
+      console.log('About from=', from)
+      if (123 == 123) {
+        //条件不成立的话 about的router-view是不会出现的
+        next()
+      }
+    },
+  },
   { path: '/page', component: Page },
   {
     path: '/user/:id',
@@ -48,7 +66,7 @@ const routes = [
       shopTopViewName: shopTop,
       shopFooterViewName: shopFooter,
     },
-    //给命名视图添加props
+    //给命名视图添加props,只有default视图才接收id
     props: {
       default: true,
       shopTopViewName: false,
@@ -93,7 +111,17 @@ const routes = [
 // 暂时保持简单
 const router = createRouter({
   // 4. 内部提供了 history 模式的实现。为了简单起见，我们在这里使用 hash 模式。
-  history: createWebHashHistory(),
+  // history: createWebHashHistory(),
+  history: createWebHistory(), //使用历史模式。
+  //两者的区别在于 Hash模式的URL有#,但是历史模式没有#
   routes, // `routes: routes` 的缩写
 })
+/*全局守卫
+router.beforeEach((to, from, next) => {
+  console.log('to=', to)
+  console.log('from=', from)
+  next() //通行证
+})
+*/
+
 export default router //导出路由，使得这个路由可以被挂载到main.js上
