@@ -1,9 +1,25 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+import store from './store/index.js'
+import Home from './views/Home.vue'
+export default {
+  provide: {
+    //App.vue是父组件provide了store，它的子组件就可以通过inject store来使用store
+    store,
+  },
+  components: {
+    //注册组件
+    Home,
+  },
+  data() {
+    return {
+      msg: 'This is App.js',
+    }
+  },
+}
 </script>
 
 <template>
+  <Home :message="msg" />
   <div>
     <h1>Hello App!</h1>
     <p>
