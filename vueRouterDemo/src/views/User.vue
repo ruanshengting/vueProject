@@ -21,6 +21,7 @@ export default {
 <script setup>
 // import { useRoute } from 'vue-router'
 // console.log(useRoute().params.id)
+
 const props = defineProps({
   id: String,
 })

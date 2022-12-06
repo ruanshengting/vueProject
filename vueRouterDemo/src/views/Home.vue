@@ -1,6 +1,6 @@
 <template>
   <div>
-    this is home
+    ------------ this is home------------
   </div>
   <div>
     {{ store.state.msg }}
@@ -15,6 +15,9 @@
       </div>
     </li>
   </ul> -->
+  <ul>
+    <li v-for="item in list" :key="item">{{ item }}</li>
+  </ul>
   <ul>
     <li v-for="item in store.state.commentList" :key="item.commentId">
       <div>
@@ -38,7 +41,24 @@ export default {
       commentList: [],
     }
   },
-  props: ['message'],
+  // props: ['message'],
+  props: {
+    //1.限制类型
+    //message: String,
+    //2.限制类型且给默认值
+    message: {
+      type: String,
+      default: 'This is a default value',
+      required: true, //必传值，否则会给出警告
+    },
+    list: {
+      type: Array,
+      default() {
+        //Array 或者 Object的default值要用工厂函数返回
+        return [9, 99, 999]
+      },
+    },
+  },
   created() {
     /*
   fetch('http://localhost:4000/comment/music?id=186016&limit=1')//默认执行get请求
@@ -67,6 +87,10 @@ export default {
       .then((res) => {
         console.log('🚀 ~ file: Home.vue:25 ~ created ~ res', res.data.data.hot)
       })
+  },
+  mounted() {
+    console.log('this.$parent=', this.$parent) //子组件访问父组件，但是尽量少用
+    console.log('this.$root', this.$root) //组件访问根组件
   },
 }
 </script>

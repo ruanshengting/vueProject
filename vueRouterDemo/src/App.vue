@@ -1,6 +1,7 @@
 <script>
 import store from './store/index.js'
 import Home from './views/Home.vue'
+import shopTop from './views/shopTop.vue'
 export default {
   provide: {
     //App.vue是父组件provide了store，它的子组件就可以通过inject store来使用store
@@ -9,19 +10,30 @@ export default {
   components: {
     //注册组件
     Home,
+    shopTop,
   },
   data() {
     return {
       msg: 'This is App.js',
+      list: [1, 2, 3, 4],
+      message: '',
     }
+  },
+  methods: {
+    getChildMsg(value) {
+      this.message = value
+    },
   },
 }
 </script>
 
 <template>
+  <!-- :list="list" -->
   <Home :message="msg" />
+  <!-- step2：父组件中，通过v-on监听子组件中定义的事件 -->
+  <shopTop @injectMsg="getChildMsg" />
+  <h2>{{ message }}</h2>
   <div>
-    <h1>Hello App!</h1>
     <p>
       <!--使用 router-link 组件进行导航 -->
       <!--通过传递 `to` 来指定链接 也就是router里的path-->
